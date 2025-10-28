@@ -1,0 +1,74 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Agent {
+  id           String  @id @default(cuid())
+  name         String
+  type         String // "job_description" | "seo_content" | "general"
+  systemPrompt String  @db.Text
+  tools        Json    @default("[]") // Array of enabled tool IDs
+  config       Json    @default("{}") // Model parameters (temperature, max_tokens, etc)
+  enabled      Boolean @default(true)
+  parentId     String?
+  parent       Agent?  @relation("SubAgents", fields: [parentId], references: [id], onDelete: Cascade)
+  subAgents    Agent[] @relation("SubAgents")
+
+  chatSessions ChatSession[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([parentId])
+}
+
+model Tool {
+  id          String  @id
+  name        String  @unique
+  description String
+  schema      Json // JSON schema for tool parameters
+  enabled     Boolean @default(true)
+  category    String // "job_description" | "seo_content" | "utility"
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model ChatSession {
+  id       String @id @default(cuid())
+  agentId  String
+  agent    Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  messages Json   @default("[]") // Array of message objects
+  metadata Json   @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([agentId])
+  @@index([createdAt])
+}
+
+model SystemPrompt {
+  id       String  @id @default(cuid())
+  name     String
+  content  String  @db.Text
+  category String // "job_description" | "seo_content"
+  version  Int     @default(1)
+  isActive Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([name, version])
+  @@index([category, isActive])
+}
