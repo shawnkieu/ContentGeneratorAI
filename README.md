@@ -413,7 +413,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues:** [GitHub Issues](https://github.com/yourusername/recruitment-ai-chatbot/issues)
 - **Discussions:** [GitHub Discussions](https://github.com/yourusername/recruitment-ai-chatbot/discussions)
-- **Email:** your.email@example.com
+- **Email:** kieuqhuy@gmail.com
 
 ## 🌟 Star History
 
