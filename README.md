@@ -31,7 +31,7 @@ An intelligent AI-powered chatbot built with Next.js and Claude 4, specialized i
 1. **Clone and install dependencies**
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/shawnkieu/ContentGeneratorAI.git
 cd recruitment-ai-chatbot
 npm install
 ```
