@@ -2,10 +2,10 @@
 
 An intelligent AI-powered chatbot built with Next.js and Claude 4, specialized in generating job descriptions and SEO content for the recruitment industry.
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Anthropic Claude](https://img.shields.io/badge/Claude-4.5-purple?style=flat-square)
-![Prisma](https://img.shields.io/badge/Prisma-5-2D3748?style=flat-square&logo=prisma)
+![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?style=flat-square&logo=prisma)
 
 ## ✨ Features
 
